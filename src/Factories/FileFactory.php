@@ -24,6 +24,7 @@ class FileFactory implements FactoryInterface
             ->setSize((int) $parameters['size'])
             ->setParentFolder($parameters['parentFolder'])
             ->setId($parameters['id'])
+            ->setProvider($parameters['provider'])
         ;
 
         return $file;
