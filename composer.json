@@ -1,0 +1,30 @@
+{
+    "name": "gpenverne/psr-cloud-files",
+    "type": "bundle",
+    "description": "Interfaces and models for cloud files",
+    "keywords": ["cloud"],
+    "license": "MIT",
+    "authors": [{
+        "name": "Gpenverne",
+        "homepage": "https://github.com/gpenverne"
+    }],
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require": {
+        "php": ">=5.6"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.2",
+        "henrikbjorn/phpspec-code-coverage": "^3.0",
+        "friendsofphp/php-cs-fixer": "^2.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Gpenverne\\PsrCloudFiles\\": "src",
+            "": "vendor/"
+        }
+    }
+}

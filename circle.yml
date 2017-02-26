@@ -1,0 +1,9 @@
+dependencies:
+    cache_directories:
+        - ~/.composer/cache
+    override:
+        - SYMFONY_ENV=test composer install --no-interaction --optimize-autoloader --classmap-authoritative
+test:
+    override:
+        - composer validate
+        - php bin/phpspec run -fpretty --no-interaction
