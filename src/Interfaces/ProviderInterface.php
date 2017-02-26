@@ -29,4 +29,14 @@ interface ProviderInterface
      * @return string|false
      */
     public function getLink(FileInterface $file);
+
+    /**
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * @param string $name
+     */
+    public function setName($name);
 }

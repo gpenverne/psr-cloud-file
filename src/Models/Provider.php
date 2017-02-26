@@ -14,6 +14,11 @@ class Provider implements ProviderInterface
     private $rootFolder;
 
     /**
+     * @var string
+     */
+    protected $name;
+
+    /**
      * {@inheritdoc}
      */
     public function getRootFolder()
@@ -48,5 +53,23 @@ class Provider implements ProviderInterface
     public function getLink(FileInterface $file)
     {
         return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 }
