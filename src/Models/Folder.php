@@ -67,6 +67,37 @@ class Folder extends CloudItem implements FolderInterface
     }
 
     /**
+     * @return string
+     */
+    public function getType()
+    {
+        return CloudItemInterface::TYPE_FOLDER;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByPath($path)
+    {
+        $paths = explode(\DIRECTORY_SEPARATOR, $path);
+        $firstPath = array_shift($paths);
+
+        if (empty($paths)) {
+            $searchType = self::TYPE_FILE;
+            $cloudItem = $this->search($firstPath, $searchType);
+
+            return $cloudItem;
+        } else {
+            $searchType = self::TYPE_FOLDER;
+            $cloudItem = $this->search($firstPath, $searchType);
+
+            if (null !== $cloudItem && $cloudItem->isFolder()) {
+                return $cloudItem->findByPath(implode(\DIRECTORY_SEPARATOR, $paths));
+            }
+        }
+    }
+
+    /**
      * @param FileInterface $file
      *
      * @return $this
@@ -88,5 +119,29 @@ class Folder extends CloudItem implements FolderInterface
         $this->folders[$folder->getId()] = $folder;
 
         return $this;
+    }
+
+    /**
+     * @param string $itemName
+     *
+     * @return CloudItemInterface|null
+     */
+    private function search($itemName, $type = null)
+    {
+        if (null === $type) {
+            $searchArray = $this->getItems();
+        } elseif (self::TYPE_FILE == $type) {
+            $searchArray = $this->getFiles();
+        } else {
+            $searchArray = $this->getFolders();
+        }
+
+        foreach ($searchArray as $id => $cloudItem) {
+            if ($itemName === $cloudItem->getName()) {
+                return $cloudItem;
+            }
+        }
+
+        return null;
     }
 }

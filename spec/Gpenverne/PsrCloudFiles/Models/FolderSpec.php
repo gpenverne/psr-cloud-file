@@ -63,4 +63,38 @@ class FolderSpec extends ObjectBehavior
         ]);
         $this->getFiles()->shouldReturn([]);
     }
+
+    public function it_returns_a_path(FolderInterface $folder, FolderInterface $rootFolder)
+    {
+        $folder->getName()->willReturn('parentFolder');
+        $folder->isRoot()->willReturn(false);
+        $folder->getParentFolder()->willReturn($rootFolder);
+        $rootFolder->getName()->willReturn('');
+        $rootFolder->isRoot()->willReturn(true);
+
+        $this->setParentFolder($folder)->shouldReturn($this);
+        $this->setName('filename');
+        $this->getPath()->shouldReturn('/parentFolder/filename');
+    }
+
+    public function it_searchs_instead_items(FileInterface $file, FolderInterface $folder)
+    {
+        $file->getName()->willReturn('somefile');
+        $file->isFolder()->willReturn(false);
+        $file->getId()->willReturn('an-id');
+        $this->addItem($file);
+
+        $this->findByPath('somefile')->shouldReturn($file);
+
+        $folder->getName()->willReturn('somepath');
+        $folder->isFolder()->willReturn(true);
+        $folder->getId()->willReturn('folder-id');
+        $folder->getItems()->willReturn([
+            'an-id' => $file,
+        ]);
+        $this->addItem($folder);
+        $folder->findByPath('somefile')->willReturn($file);
+
+        $this->findByPath('somepath/somefile')->shouldReturn($file);
+    }
 }

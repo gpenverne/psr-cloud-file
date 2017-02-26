@@ -4,6 +4,7 @@ namespace Gpenverne\PsrCloudFiles\Factories;
 
 use Gpenverne\PsrCloudFiles\Interfaces\CloudItemInterface;
 use Gpenverne\PsrCloudFiles\Interfaces\FileInterface;
+use Gpenverne\PsrCloudFiles\Models\File;
 
 class FileFactory implements FactoryInterface
 {

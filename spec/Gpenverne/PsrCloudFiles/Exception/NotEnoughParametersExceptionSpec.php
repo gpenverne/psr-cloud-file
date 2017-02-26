@@ -4,12 +4,16 @@ namespace spec\Gpenverne\PsrCloudFiles\Exception;
 
 use Gpenverne\PsrCloudFiles\Exception\NotEnoughParametersException;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class NotEnoughParametersExceptionSpec extends ObjectBehavior
 {
-    function it_is_initializable()
+    public function it_is_initializable()
     {
         $this->shouldHaveType(NotEnoughParametersException::class);
+    }
+
+    public function it_is_an_exception()
+    {
+        $this->shouldHaveType(\Exception::class);
     }
 }
