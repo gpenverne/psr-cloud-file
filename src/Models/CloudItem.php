@@ -2,6 +2,7 @@
 
 namespace Gpenverne\PsrCloudFiles\Models;
 
+use Gpenverne\PsrCloudFiles\Interfaces\CloudItemInterface;
 use Gpenverne\PsrCloudFiles\Interfaces\FolderInterface;
 use Gpenverne\PsrCloudFiles\Interfaces\ProviderInterface;
 
@@ -96,7 +97,7 @@ class CloudItem
      */
     public function isFile()
     {
-        return self::ITEM_TYPE === self::TYPE_FILE;
+        return $this->getType() === CloudItemInterface::TYPE_FILE;
     }
 
     /**
@@ -104,7 +105,7 @@ class CloudItem
      */
     public function isFolder()
     {
-        return self::ITEM_TYPE === self::TYPE_FOLDER;
+        return $this->getType() === CloudItemInterface::TYPE_FOLDER;
     }
 
     /**
@@ -143,11 +144,19 @@ class CloudItem
 
         while (!$currentFolder->isRoot()) {
             $paths[] = $currentFolder->getName();
-            $currentFolder = $this->getParentFolder();
+            $currentFolder = $currentFolder->getParentFolder();
         }
 
         $array = array_reverse($paths);
 
-        return implode(\DIRECTORY_SEPARATOR, $array);
+        return sprintf('%s%s', \DIRECTORY_SEPARATOR, implode(\DIRECTORY_SEPARATOR, $array));
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return self::TYPE_UNKNOWN;
     }
 }

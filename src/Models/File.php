@@ -2,6 +2,7 @@
 
 namespace Gpenverne\PsrCloudFiles\Models;
 
+use Gpenverne\PsrCloudFiles\Interfaces\CloudItemInterface;
 use Gpenverne\PsrCloudFiles\Interfaces\FileInterface;
 
 class File extends CloudItem implements FileInterface
@@ -29,5 +30,13 @@ class File extends CloudItem implements FileInterface
         $this->size = (int) $size;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return CloudItemInterface::TYPE_FILE;
     }
 }

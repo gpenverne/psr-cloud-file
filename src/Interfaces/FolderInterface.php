@@ -4,7 +4,6 @@ namespace Gpenverne\PsrCloudFiles\Interfaces;
 
 interface FolderInterface extends CloudItemInterface
 {
-    const ITEM_TYPE = CloudItemInterface::TYPE_FOLDER;
     const REQUIRED_PARAMETERS = [
         'id',
         'name',
@@ -38,4 +37,11 @@ interface FolderInterface extends CloudItemInterface
      * @return $this
      */
     public function addItem(CloudItemInterface $item);
+
+    /**
+     * @param string $path
+     *
+     * @return CloudItemInterface|null
+     */
+    public function findByPath($path);
 }

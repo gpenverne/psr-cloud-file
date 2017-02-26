@@ -11,6 +11,15 @@ interface ProviderInterface
 
     /**
      * @param FolderInterface $folder
+     *
+     * @return $this
      */
     public function setRootFolder(FolderInterface $folder);
+
+    /**
+     * @param string $path
+     *
+     * @return CloudItemInterface|null
+     */
+    public function findByPath($path);
 }

@@ -6,6 +6,7 @@ interface CloudItemInterface
 {
     const TYPE_FOLDER = 'folder';
     const TYPE_FILE = 'file';
+    const TYPE_UNKNOWN = 'unknown';
 
     /**
      * @return FolderInterface|null
@@ -51,4 +52,9 @@ interface CloudItemInterface
      * @return string
      */
     public function getPath();
+
+    /**
+     * @return string
+     */
+    public function getType();
 }

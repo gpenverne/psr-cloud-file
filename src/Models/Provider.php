@@ -13,7 +13,7 @@ class Provider implements ProviderInterface
     private $rootFolder;
 
     /**
-     * @return FolderInterface
+     * {@inheritdoc}
      */
     public function getRootFolder()
     {
@@ -21,14 +21,23 @@ class Provider implements ProviderInterface
     }
 
     /**
-     * @param FolderInterface $folder
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setRootFolder(FolderInterface $folder)
     {
         $this->rootFolder = $folder;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByPath($path)
+    {
+        $paths = explode(\DIRECTORY_SEPARATOR, $path);
+        array_shift($paths);
+
+        return $this->rootFolder->findByPath(implode(\DIRECTORY_SEPARATOR, $paths));
     }
 }
