@@ -2,6 +2,7 @@
 
 namespace Gpenverne\PsrCloudFiles\Models;
 
+use Gpenverne\PsrCloudFiles\Interfaces\FileInterface;
 use Gpenverne\PsrCloudFiles\Interfaces\FolderInterface;
 use Gpenverne\PsrCloudFiles\Interfaces\ProviderInterface;
 
@@ -39,5 +40,13 @@ class Provider implements ProviderInterface
         array_shift($paths);
 
         return $this->rootFolder->findByPath(implode(\DIRECTORY_SEPARATOR, $paths));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink(FileInterface $file)
+    {
+        return false;
     }
 }

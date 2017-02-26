@@ -22,4 +22,11 @@ interface ProviderInterface
      * @return CloudItemInterface|null
      */
     public function findByPath($path);
+
+    /**
+     * @param FileInterface $file
+     *
+     * @return string|false
+     */
+    public function getLink(FileInterface $file);
 }
