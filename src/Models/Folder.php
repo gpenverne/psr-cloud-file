@@ -83,8 +83,7 @@ class Folder extends CloudItem implements FolderInterface
         $firstPath = array_shift($paths);
 
         if (empty($paths)) {
-            $searchType = self::TYPE_FILE;
-            $cloudItem = $this->search($firstPath, $searchType);
+            $cloudItem = $this->search($firstPath);
 
             return $cloudItem;
         } else {
