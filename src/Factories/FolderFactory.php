@@ -21,8 +21,10 @@ class FolderFactory implements FactoryInterface
 
         $folder = new Folder();
         $folder->setId($parameters['id'])
-        ->setName($parameters['name'])
-        ->setParentFolder($parameters['parentFolder']);
+            ->setName($parameters['name'])
+            ->setParentFolder($parameters['parentFolder'])
+            ->setProvider($parameters['provider'])
+        ;
 
         return $folder;
     }
