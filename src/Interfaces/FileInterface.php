@@ -23,4 +23,9 @@ interface FileInterface extends CloudItemInterface
      * @return $this
      */
     public function setSize($size);
+
+    /**
+     * @return string|false
+     */
+    public function getLink();
 }

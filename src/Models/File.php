@@ -13,7 +13,7 @@ class File extends CloudItem implements FileInterface
     protected $size;
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getSize()
     {
@@ -21,9 +21,7 @@ class File extends CloudItem implements FileInterface
     }
 
     /**
-     * @param int $size
-     *
-     * @return $size
+     * {@inheritdoc}
      */
     public function setSize($size)
     {
@@ -38,5 +36,13 @@ class File extends CloudItem implements FileInterface
     public function getType()
     {
         return CloudItemInterface::TYPE_FILE;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLink()
+    {
+        return $this->provider->getLink($this);
     }
 }
