@@ -72,9 +72,9 @@ interface ProviderInterface
     public function getExpiresAt();
 
     /**
-     * @param DateTime $datetime
+     * @param \DateTime $datetime
      *
      * @return $this
      */
-    public function setExpiresAt(DateTime $datetime);
+    public function setExpiresAt(\DateTime $datetime);
 }

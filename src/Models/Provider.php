@@ -135,7 +135,7 @@ class Provider implements ProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function setExpiresAt(DateTime $datetime)
+    public function setExpiresAt(\DateTime $datetime)
     {
         $this->expiresAt = $datetime;
 
