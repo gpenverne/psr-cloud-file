@@ -37,6 +37,44 @@ interface ProviderInterface
 
     /**
      * @param string $name
+     *
+     * @return $this
      */
     public function setName($name);
+
+    /**
+     * @return string
+     */
+    public function getToken();
+
+    /**
+     * @param string $token
+     *
+     * @return $this
+     */
+    public function setToken($token);
+
+    /**
+     * @return string
+     */
+    public function getRefreshToken();
+
+    /**
+     * @param string $token
+     *
+     * @return $this
+     */
+    public function setRefreshToken($token);
+
+    /**
+     * @return DateTime|null
+     */
+    public function getExpiresAt();
+
+    /**
+     * @param DateTime $datetime
+     *
+     * @return $this
+     */
+    public function setExpiresAt(DateTime $datetime);
 }

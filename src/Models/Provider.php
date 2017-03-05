@@ -19,6 +19,21 @@ class Provider implements ProviderInterface
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $token;
+
+    /**
+     * @var string
+     */
+    protected $refreshToken;
+
+    /**
+     * @var DateTime
+     */
+    protected $expiresAt;
+
+    /**
      * {@inheritdoc}
      */
     public function getRootFolder()
@@ -69,6 +84,60 @@ class Provider implements ProviderInterface
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRefreshToken()
+    {
+        return $this->refreshToken;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setRefreshToken($token)
+    {
+        $this->refreshToken = $token;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getExpiresAt()
+    {
+        return $this->expiresAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setExpiresAt(DateTime $datetime)
+    {
+        $this->expiresAt = $datetime;
 
         return $this;
     }
