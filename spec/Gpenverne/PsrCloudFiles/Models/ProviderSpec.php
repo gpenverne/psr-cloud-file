@@ -19,4 +19,10 @@ class ProviderSpec extends ObjectBehavior
         $this->setRootFolder($folder)->shouldReturn($this);
         $this->getRootFolder()->shouldReturn($folder);
     }
+
+    public function it_returns_root_folder_when_asking_for_root_path(FolderInterface $folder)
+    {
+        $this->setRootFolder($folder);
+        $this->findByPath('/')->shouldReturn($folder);
+    }
 }

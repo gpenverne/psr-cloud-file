@@ -56,6 +56,10 @@ class Provider implements ProviderInterface
      */
     public function findByPath($path)
     {
+        if ('/' === $path) {
+            return $this->rootFolder;
+        }
+
         $paths = explode(\DIRECTORY_SEPARATOR, $path);
         array_shift($paths);
 
